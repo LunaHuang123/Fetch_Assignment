@@ -12,6 +12,9 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
+    "start": "node app.js"
+ },
+  "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
@@ -34,5 +37,7 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+    
   }
-}
+  }
+
