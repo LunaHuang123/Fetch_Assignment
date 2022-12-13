@@ -1,24 +1,45 @@
 
-import './App.css';
+import React from "react";
 
-function App() {
+export default function App() {
   return (
-    <div className="App">
-      
-      <h1>Hello World</h1>
-      <div>
-      <b>Full Name</b> <input></input>
-      </div>
-      <div>
-        <b>Email</b> <input></input>
-      </div>
-      <div>
-        <b>Password</b> <input></input>
-      </div>
-      <div><b>Occupation</b> <select><option>Select place</option></select></div>
-      <div><b>State</b> <select><option>Select State</option></select></div>
+    <div>
+    <div><b>Full Name</b><input></input></div>
+    <div><b>Email</b><input></input></div>
+    <div><b>Password</b><input></input></div>
+      <b>Occupations</b>
+      <select>
+        <option>--Choose Occupations--</option>
+        <option>
+          <MyComponent />
+        </option>
+      </select>
+      <div><b>State</b><select><option>--Choose State--</option></select></div>
     </div>
   );
 }
 
-export default App;
+function MyComponent() {
+  const [data, setData] = React.useState([]);
+
+  React.useEffect(() => {
+    fetch("https://frontend-take-home.fetchrewards.com/form")
+      .then((res) => res.json())
+      .then((data) => {
+        setData(data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
+
+  console.log(data);
+
+  return (
+    <ul>
+      {data.occupations}
+      
+    </ul>
+  );
+}
+
